@@ -5,6 +5,13 @@
   <hr>
   <div class="row">
     <div class="col-xs-12">
+      <app-recipe-item
+      *ngFor="let recipeEl of recipes"
+      [recipe]="recipeEl"></app-recipe-item>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-xs-12">
       <a href="#" class="list-group-item clearfix"
       *ngFor="let recipe of recipes">
       <div class="pull-left">
@@ -21,4 +28,4 @@
     </a>
     <app-recipe-item></app-recipe-item>
     </div>
-</div>
+</div> -->

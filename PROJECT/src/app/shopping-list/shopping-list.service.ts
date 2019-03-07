@@ -1,12 +1,11 @@
-import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { EventEmitter } from '@angular/core';
 
 export class ShoppingListService {
   ingredientsChanged = new EventEmitter<Ingredient[]>();
-  // could manage our shopping list, list of ingredient. maybe add addIngredient here. it shouldn't live in the componenet anymore.
   private ingredients: Ingredient[] = [
-    new Ingredient('Apples', 4),
-    new Ingredient('Asparagus', 2)
+    new Ingredient('Apples', 5),
+    new Ingredient('Tomatoes', 10),
   ];
 
   getIngredients() {
@@ -19,8 +18,10 @@ export class ShoppingListService {
   }
 
   addIngredients(ingredients: Ingredient[]) {
-    // using spread operator, spread our ingredients into a list of single ingredients which are now pushed without issues to our ingredients array.
-  this.ingredients.push(...ingredients);
-  this.ingredientsChanged.emit(this.ingredients.slice());
-}
+    // for (let ingredient of ingredients) {
+    //   this.addIngredient(ingredient);
+    // }
+    this.ingredients.push(...ingredients);
+    this.ingredientsChanged.emit(this.ingredients.slice());
+  }
 }

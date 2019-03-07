@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 
 export class ShoppingListService {
@@ -17,4 +17,10 @@ export class ShoppingListService {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
+
+  addIngredients(ingredients: Ingredient[]) {
+    // using spread operator, spread our ingredients into a list of single ingredients which are now pushed without issues to our ingredients array.
+  this.ingredients.push(...ingredients);
+  this.ingredientsChanged.emit(this.ingredients.slice());
+}
 }
